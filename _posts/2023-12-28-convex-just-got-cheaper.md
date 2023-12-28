@@ -66,7 +66,7 @@ def _checkpoint_read(_user: address, _delegated: bool) -> Point:
 
 The `for` loop must be entered twice on each gauge interaction as it checks for each user's boost sent, and again for his boost received. Certainly this threatens to be expensive, but a close look at the surrounding code shows that some unique conditions are required in order for a user to find themselves stuck in this loop.
 
-Specifically, a user must have an update (or `Point`) written in the past via them sending or receiving boost from another user. The problem grows more pronounced as the number of weeks since the last `Point` write increases, forcing the view function to compute the data for each missing week. Each week that passes adds an extra two SLOADs (`2 * 21,000 gas`) plus a few math operations.
+Specifically, a user must have an update (or `Point`) written in the past via them sending or receiving boost from another user. The problem grows more pronounced as the number of weeks since the last `Point` write increases, forcing the view function to compute the data for each missing week. Each week that passes adds an extra two SLOADs (`2 * 2,100 gas`) plus a few math operations.
 
 At the time of my research, it had been 71 weeks (!!!) since the last update had ocurred for both Yearn and Convex's veCRV position. And sure enough, as we can see in the chart above, the average cost to transact is trending upwards as new weeks add iterations to the loop.
 
