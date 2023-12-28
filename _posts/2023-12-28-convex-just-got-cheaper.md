@@ -8,7 +8,7 @@ featured: true
 ---
 
 ### Overview
-If you're like me, you've gas costs becoming inordinately expensive when interacting with Convex. So I decided to investigate what was going on.
+If you're like me, you've noticed gas costs becoming inordinately expensive when interacting with Convex. So I decided to investigate what was going on.
 
 What I found was an extremely inefficient code path which actually had nothing to do with Convex contracts at all - despite it having an outsized impact on their users specifically. In fact, the gas guzzling code turned out to be related to a niche feature in Curve's LP gauges. 
 
