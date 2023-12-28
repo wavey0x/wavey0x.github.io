@@ -12,7 +12,7 @@ If you're like me, you've noticed gas costs becoming inordinately expensive when
 
 What I found was an extremely inefficient code path which actually had nothing to do with Convex contracts at all - despite it having an outsized impact on their users specifically. In fact, the gas guzzling code turned out to be related to a niche feature in Curve's LP gauges. 
 
-To visualize it, I analyzed data from every Convex deposit over the last ~14 months, and the gas consumption of each.
+To visualize it, I analyzed data from every Convex deposit over the last ~14 months, and the gas consumption of each. 
 
 <p align="center" >
     <img src="/assets/img/gas_chart0.png" alt="Alt text" width="800"/>
