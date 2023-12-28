@@ -163,7 +163,9 @@ blockquote {
 
 .profile {
   width: 100%;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .more-info {
     margin-bottom: 5px;
     margin-top: 5px;
@@ -182,6 +184,14 @@ blockquote {
 
 .profile.float-left {
   margin-right: 1rem;
+}
+
+.profile.float-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: none; /* Clearing any float properties */
+  margin: 0 auto; /* Centering horizontally */
 }
 
 @media (min-width: 576px) {
@@ -352,9 +362,10 @@ blockquote {
   text-align: center;
 
   .contact-icons {
-    font-size: 4rem;
+    font-size: 1.1rem;
 
     a {
+      margin: 0 10px;
       i::before {
         color: var(--global-text-color);
         transition-property: all 0.2s ease-in-out;
@@ -1057,13 +1068,4 @@ nav[data-toggle="toc"] {
     margin-bottom: 0;
     padding-top: 0.5rem;
   }
-}
-
-.medium-zoom-overlay,
-.medium-zoom-image--opened {
-  z-index: 999;
-}
-
-#toc-sidebar {
-  z-index: 1;
 }
