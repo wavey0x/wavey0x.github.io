@@ -2,7 +2,7 @@
 layout: post
 title: Using Convex Just Got Cheaper for Everyone
 date: 2023-12-28 00:00:00
-description: How I was able to permissionlessly resolve a code inefficiency to drop costs by close to 50%.
+description: How I was able to permissionlessly resolve a code inefficiency and drop costs by over 50%.
 tags: Curve Convex data
 featured: true
 ---
