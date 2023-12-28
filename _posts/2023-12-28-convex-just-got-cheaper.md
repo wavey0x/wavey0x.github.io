@@ -21,7 +21,7 @@ To visualize it, I analyzed data from every Convex deposit over the last ~14 mon
     </em>
 </p>
 
-As you can see, the average gas price of a deposit had been growing steadily over time, increasing by 123% to nearly 1.25M gas per transaction.
+As you can see, the average cost of a deposit had been growing steadily over time, increasing by 123% to nearly 1.25M gas per transaction.
 
 This post will provide a technical overview of what caused this ramping of gas costs, why it affected Convex more than others, and what the fix was. We'll finish with some suggestions for how Curve might mitigate this in the future.
 
