@@ -8,9 +8,9 @@ featured: true
 ---
 
 ### Overview
-If you're like me, you've noticed increased gas costs when interacting with Convex. I decided to investigated why.
+If you're like me, you've gas costs becoming inordinately expensive when interacting with Convex. So I decided to investigate what was going on.
 
-What I found was an extremely inefficient code path which actually had nothing to do with Convex contracts at all - despite it having an outsized impact on their users. In fact, the gas guzzling code turned out to be related to a niche feature in Curve's LP gauges. 
+What I found was an extremely inefficient code path which actually had nothing to do with Convex contracts at all - despite it having an outsized impact on their users specifically. In fact, the gas guzzling code turned out to be related to a niche feature in Curve's LP gauges. 
 
 To visualize it, I analyzed data from every Convex deposit over the last ~14 months, and the gas consumption of each. 
 
@@ -21,7 +21,7 @@ To visualize it, I analyzed data from every Convex deposit over the last ~14 mon
     </em>
 </p>
 
-As you can see, the average cost of a deposit had been growing steadily over time, increasing by 123% to nearly 1.25M gas per transaction.
+As you can see, the average cost of a deposit had been growing steadily for more than a year from late 2022, increasing by 123% to nearly 1.25M gas per transaction by December this year.
 
 This post will provide a technical overview of what caused this ramping of gas costs, why it affected Convex more than others, and what the fix was. We'll finish with some suggestions for how Curve might mitigate this in the future.
 
