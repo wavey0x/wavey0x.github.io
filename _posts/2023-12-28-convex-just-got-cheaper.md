@@ -28,14 +28,14 @@ This post will provide a technical overview of what caused this ramping of gas c
 ### Background
 Every Convex deposit routes a user's LPs into their respective Curve gauge. The process is routine. However, as execution is handed over to the Curve gauge via `deposit`, `withdraw` or `claim`, it is possible for a significant jump in gas costs when certain conditions are in place.
 
-Curve invented a concept of "boost" which allows people who lock more CRV to earn higher emissions on the same sized LP position. A couple years ago, they took this concept further by introducing a clever mechanism called "boost delegation", which allows users with unutilized boost to delegate it to others. This opened the possibility for boost selling marketplaces like [Warden](https://app.warden.vote/boosts/) to emerge.
+Curve invented a concept of "boost" which allows people who lock more CRV to earn higher emissions on the same sized LP position. A couple years ago, they took this concept further by introducing a clever mechanism called "boost delegation", which allows users who may have unutilized boost to delegate it to others. This opened the possibility for boost marketplaces like [Warden](https://app.warden.vote/boosts/) to emerge.
 
-This boost delegation feature was built into new gauges and requires a few additional operations during each user interaction. In the context of Convex's gas issue we're discussing today, two key contracts played a role here:
+This boost delegation feature was built into new gauges and requires a few additional operations during each user interaction. In the context of Convex's gas issue we're discussing today, two key contracts played a role:
 1. [**Boost Delegation V2**](https://etherscan.io/address/0xd0921691c7debc698e6e372c6f74dc01fc9d3778#code). This contract tracks all boost delegations. Under the hood, when a delegation is made, this contract saves the data and performs the math to apply a modified veCRV balance to the users involved. The `adjusted_balance_of(_user)` function it exposes returns this modified amount.
 1. [**veBoost Patch**](https://etherscan.io/address/0xe7330c73b373a50B95D3Beb25C13D2BEDB6FcE7E). As the name suggests, this contract is a patch. It was introduced at block 17,964,967 to fix an unrelated issue ([outlined here](https://hackmd.io/WKwRKhEfTiCeWY8qFxiMJA)), but as we'll see, it also contributed to the problem.
 
 ### The Problem
-When a gauge checks for a user's adjusted balance, this call gets routed through multiple contracts. Importantly, the call reaches *Boost Delegation V2* it arrives at a function called `_checkpoint_read()` on each check for adjusted balance. By glancing at this code, you can probably guess where this is going...
+When a gauge checks for a user's adjusted balance, the call gets routed through multiple contracts. Importantly, the call reaches *Boost Delegation V2* and arrives at a function called `_checkpoint_read()` on each check for adjusted balance. By glancing at this code, you can probably guess where this is going...
 
 ```python
 @view
