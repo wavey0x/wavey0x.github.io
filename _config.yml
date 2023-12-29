@@ -163,7 +163,7 @@ collections:
     permalink: /news/:path/
   projects:
     output: true
-    permalink: /projects/:path/
+    permalink: /data/:path/
 
 announcements:
   enabled: true
