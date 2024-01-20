@@ -1,6 +1,6 @@
 {
     "prisma_week": 23,
-    "updated_at": 1705792203,
+    "updated_at": 1705792839,
     "liquid_lockers": {
         "cvxPrisma": {
             "locker": "0x8ad7a9e2B3Cd9214f36Cb871336d8ab34DdFdD5b",
@@ -109,16 +109,16 @@
                 },
                 {
                     "week_number": 23,
-                    "peg": 0.7246251841759872,
-                    "lock_gain": 305951.0,
+                    "peg": 0.7243638920481539,
+                    "lock_gain": 306321.0,
                     "current_boost_multiplier": 2.0,
-                    "global_weight_ratio": 0.4746589792956458,
-                    "global_weight": 1209650821,
-                    "weight": 574171624
+                    "global_weight_ratio": 0.47466733493042945,
+                    "global_weight": 1209670061,
+                    "weight": 574190864
                 }
             ],
-            "current_staking_apr": 0.8025927817339237,
-            "current_lp_apr": 2.363158093738435
+            "current_staking_apr": 0.8109284496239372,
+            "current_lp_apr": 2.3632460080634314
         },
         "yPRISMA": {
             "locker": "0x90be6DFEa8C80c184C442a36e17cB2439AAE25a7",
@@ -227,16 +227,16 @@
                 },
                 {
                     "week_number": 23,
-                    "peg": 0.8128469418578967,
+                    "peg": 0.8130634047968314,
                     "lock_gain": 443892.0,
                     "current_boost_multiplier": 1.8236921886100603,
-                    "global_weight_ratio": 0.20534980151929313,
-                    "global_weight": 1209650821,
+                    "global_weight_ratio": 0.20534653539714248,
+                    "global_weight": 1209670061,
                     "weight": 248401556
                 }
             ],
-            "current_staking_apr": 1.4424318163024248,
-            "current_lp_apr": 3.2043096998325167
+            "current_staking_apr": 1.437851490338429,
+            "current_lp_apr": 3.204309699832516
         }
     }
 }
