@@ -1,6 +1,6 @@
 {
     "prisma_week": 23,
-    "updated_at": 1705711502,
+    "updated_at": 1705712450,
     "liquid_lockers": {
         "cvxPrisma": {
             "locker": "0x8ad7a9e2B3Cd9214f36Cb871336d8ab34DdFdD5b",
@@ -109,16 +109,16 @@
                 },
                 {
                     "week_number": 23,
-                    "peg": 0.7284407172897273,
-                    "lock_gain": 238515.0,
+                    "peg": 0.7281840555958857,
+                    "lock_gain": 238770.0,
                     "current_boost_multiplier": 2.0,
-                    "global_weight_ratio": 0.47683227876878825,
-                    "global_weight": 1196783392,
-                    "weight": 570664952
+                    "global_weight_ratio": 0.47683378659812714,
+                    "global_weight": 1196807416,
+                    "weight": 570678212
                 }
             ],
-            "current_staking_apr": 0.8152150552842932,
-            "current_lp_apr": 2.344796189108344
+            "current_staking_apr": 0.8142872471559546,
+            "current_lp_apr": 2.3445630339620873
         },
         "yPRISMA": {
             "locker": "0x90be6DFEa8C80c184C442a36e17cB2439AAE25a7",
@@ -227,16 +227,16 @@
                 },
                 {
                     "week_number": 23,
-                    "peg": 0.8299509154735375,
-                    "lock_gain": 284706.0,
+                    "peg": 0.8301887921676103,
+                    "lock_gain": 284913.0,
                     "current_boost_multiplier": 2.0,
-                    "global_weight_ratio": 0.20064105635583554,
-                    "global_weight": 1196783392,
-                    "weight": 240123884
+                    "global_weight_ratio": 0.2006460227348725,
+                    "global_weight": 1196807416,
+                    "weight": 240134648
                 }
             ],
-            "current_staking_apr": 1.4140259658051246,
-            "current_lp_apr": 3.1998213037885637
+            "current_staking_apr": 1.41352958111375,
+            "current_lp_apr": 3.200075049964838
         }
     }
 }
