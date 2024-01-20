@@ -1,6 +1,6 @@
 {
     "prisma_week": 23,
-    "updated_at": 1705787404,
+    "updated_at": 1705787690,
     "liquid_lockers": {
         "cvxPrisma": {
             "locker": "0x8ad7a9e2B3Cd9214f36Cb871336d8ab34DdFdD5b",
@@ -75,7 +75,7 @@
                     "week_number": 19,
                     "peg": 0.7904968584686212,
                     "lock_gain": 796118.0,
-                    "current_boost_multiplier": 1.9938786722735313,
+                    "current_boost_multiplier": 2.0,
                     "global_weight_ratio": 0.4932269522191451,
                     "global_weight": 931420714,
                     "weight": 459401800
@@ -109,7 +109,7 @@
                 },
                 {
                     "week_number": 23,
-                    "peg": 0.7283725538541233,
+                    "peg": 0.7279546480942698,
                     "lock_gain": 304596.0,
                     "current_boost_multiplier": 2.0,
                     "global_weight_ratio": 0.4746317856690882,
@@ -166,7 +166,7 @@
                     "week_number": 16,
                     "peg": 0.7123520979370831,
                     "lock_gain": 405374.0,
-                    "current_boost_multiplier": 2.0,
+                    "current_boost_multiplier": 1.5471165418415882,
                     "global_weight_ratio": 0.14589512683260616,
                     "global_weight": 683375889,
                     "weight": 99701212
@@ -175,7 +175,7 @@
                     "week_number": 17,
                     "peg": 0.6277900337834591,
                     "lock_gain": 375793.0,
-                    "current_boost_multiplier": 2.0,
+                    "current_boost_multiplier": 1.773815902878405,
                     "global_weight_ratio": 0.15695586965413807,
                     "global_weight": 759719584,
                     "weight": 119242448
@@ -193,7 +193,7 @@
                     "week_number": 19,
                     "peg": 0.8358691962963072,
                     "lock_gain": 381136.0,
-                    "current_boost_multiplier": 2.0,
+                    "current_boost_multiplier": 1.8482323636335152,
                     "global_weight_ratio": 0.16636319299207683,
                     "global_weight": 931420714,
                     "weight": 154954124
@@ -202,7 +202,7 @@
                     "week_number": 20,
                     "peg": 0.6788545608503505,
                     "lock_gain": 523931.0,
-                    "current_boost_multiplier": 1.62822967099535,
+                    "current_boost_multiplier": 1.410925589225494,
                     "global_weight_ratio": 0.17664566743235843,
                     "global_weight": 1031435068,
                     "weight": 182198536
@@ -220,14 +220,14 @@
                     "week_number": 22,
                     "peg": 0.8439765590504138,
                     "lock_gain": 496140.0,
-                    "current_boost_multiplier": 1.6643194181549814,
+                    "current_boost_multiplier": 1.5788431757105759,
                     "global_weight_ratio": 0.1927170214864189,
                     "global_weight": 1169171100,
                     "weight": 225319172
                 },
                 {
                     "week_number": 23,
-                    "peg": 0.8089764636977106,
+                    "peg": 0.8093883739771564,
                     "lock_gain": 443892.0,
                     "current_boost_multiplier": 1.8236921886100603,
                     "global_weight_ratio": 0.20536323818925406,
