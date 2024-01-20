@@ -1,6 +1,6 @@
 {
     "prisma_week": 23,
-    "updated_at": 1705716078,
+    "updated_at": 1705716235,
     "liquid_lockers": {
         "cvxPrisma": {
             "locker": "0x8ad7a9e2B3Cd9214f36Cb871336d8ab34DdFdD5b",
@@ -109,7 +109,7 @@
                 },
                 {
                     "week_number": 23,
-                    "peg": 0.7277652079086137,
+                    "peg": 0.7277571668786569,
                     "lock_gain": 238770.0,
                     "current_boost_multiplier": 2.0,
                     "global_weight_ratio": 0.47674863045114285,
@@ -227,7 +227,7 @@
                 },
                 {
                     "week_number": 23,
-                    "peg": 0.833165132601867,
+                    "peg": 0.8333077486794167,
                     "lock_gain": 284913.0,
                     "current_boost_multiplier": 2.0,
                     "global_weight_ratio": 0.20061019003449754,
