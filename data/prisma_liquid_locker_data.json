@@ -1,6 +1,6 @@
 {
     "prisma_week": 23,
-    "updated_at": 1705821003,
+    "updated_at": 1705821614,
     "liquid_lockers": {
         "cvxPrisma": {
             "locker": "0x8ad7a9e2B3Cd9214f36Cb871336d8ab34DdFdD5b",
@@ -109,16 +109,16 @@
                 },
                 {
                     "week_number": 23,
-                    "peg": 0.7296022580455652,
-                    "lock_gain": 341019.0,
+                    "peg": 0.7294937680698771,
+                    "lock_gain": 341815.0,
                     "current_boost_multiplier": 2.0,
-                    "global_weight_ratio": 0.475308166204707,
-                    "global_weight": 1211835186,
-                    "weight": 575995160
+                    "global_weight_ratio": 0.4753260872081975,
+                    "global_weight": 1211876578,
+                    "weight": 576036552
                 }
             ],
-            "current_staking_apr": 0.810581480582648,
-            "current_lp_apr": 2.337672486169613
+            "current_staking_apr": 0.8108355764957178,
+            "current_lp_apr": 2.337559103235801
         },
         "yPRISMA": {
             "locker": "0x90be6DFEa8C80c184C442a36e17cB2439AAE25a7",
@@ -227,15 +227,15 @@
                 },
                 {
                     "week_number": 23,
-                    "peg": 0.8133421350714528,
+                    "peg": 0.8134958158840282,
                     "lock_gain": 450288.0,
                     "current_boost_multiplier": 1.8050768161374224,
-                    "global_weight_ratio": 0.20525410622959087,
-                    "global_weight": 1211835186,
+                    "global_weight_ratio": 0.20524709571538563,
+                    "global_weight": 1211876578,
                     "weight": 248734148
                 }
             ],
-            "current_staking_apr": 1.4218524278568232,
+            "current_staking_apr": 1.421882550359832,
             "current_lp_apr": 3.200528250903362
         }
     }
