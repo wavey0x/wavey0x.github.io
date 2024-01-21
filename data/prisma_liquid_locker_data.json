@@ -1,6 +1,6 @@
 {
     "prisma_week": 23,
-    "updated_at": 1705836602,
+    "updated_at": 1705837228,
     "liquid_lockers": {
         "cvxPrisma": {
             "locker": "0x8ad7a9e2B3Cd9214f36Cb871336d8ab34DdFdD5b",
@@ -109,16 +109,16 @@
                 },
                 {
                     "week_number": 23,
-                    "peg": 0.7317121609986331,
-                    "lock_gain": 359674.0,
+                    "peg": 0.7317460555232757,
+                    "lock_gain": 375966.0,
                     "current_boost_multiplier": 2.0,
-                    "global_weight_ratio": 0.47523910209813824,
-                    "global_weight": 1214052500,
-                    "weight": 576965220
+                    "global_weight_ratio": 0.4756050327526466,
+                    "global_weight": 1214899684,
+                    "weight": 577812404
                 }
             ],
-            "current_staking_apr": 0.8106072783207172,
-            "current_lp_apr": 2.3199970414859004
+            "current_staking_apr": 0.8103010249584037,
+            "current_lp_apr": 2.3187768143059038
         },
         "yPRISMA": {
             "locker": "0x90be6DFEa8C80c184C442a36e17cB2439AAE25a7",
@@ -227,16 +227,16 @@
                 },
                 {
                     "week_number": 23,
-                    "peg": 0.8145851610909571,
+                    "peg": 0.8145915718408789,
                     "lock_gain": 450288.0,
                     "current_boost_multiplier": 1.8050768161374224,
-                    "global_weight_ratio": 0.20487923545316203,
-                    "global_weight": 1214052500,
+                    "global_weight_ratio": 0.2047363673526151,
+                    "global_weight": 1214899684,
                     "weight": 248734148
                 }
             ],
-            "current_staking_apr": 1.4271360585127666,
-            "current_lp_apr": 3.1967079072913243
+            "current_staking_apr": 1.4271749476048758,
+            "current_lp_apr": 3.1967079072913234
         }
     }
 }
