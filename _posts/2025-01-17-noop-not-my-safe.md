@@ -7,15 +7,15 @@ tags: Security Gnosis Safe Disclosures
 featured: true
 ---
 
-If you're like me, you get a kick out of deploying Safe multisigs deterministically to [vanity addresses](https://etherscan.io/address/0xC001d00d425Fa92C4F840baA8f1e0c27c4297a0B) and across multiple networks.
+If you're like me, you get a kick out of deploying Safe multisigs deterministically to [vanity addresses](https://github.com/nlordell/deadbeef) and across multiple networks.
 
 But how safe is this practice?
 
-We all remember when [Wintermute lost 20M OP](https://banteg.mirror.xyz/iZAsBNL3j_5NIAY2Erav1r7Q4ecc7SC76AfMjyScs34) because an attacker replicated their Safe address on Optimism with malicious owners. Lesson learned: nobody deploys multichain Safes with `CREATE` anymore— CREATE2 is the way to go. And since my deployments depend on an initializer containing my owner addresses, nobody can steal my Safe on new networks, right?
+We all remember when [Wintermute lost 20M OP](https://banteg.mirror.xyz/iZAsBNL3j_5NIAY2Erav1r7Q4ecc7SC76AfMjyScs34) because an attacker replicated their Safe address on Optimism with malicious owners. Lesson learned: nobody deploys multichain Safes from the factory with the `CREATE` opcode anymore— `CREATE2` is the way to go. And since my deployments depend on an initializer containing my owner addresses, nobody can steal my Safe on new networks, right?
 
 **Wrong.**
 
-Today, I stumbled upon a way to "steal" a Safe address even with the `CREATE2` deploy method.
+Today, I stumbled upon a way to "steal" a Safe address even when the owner deployed with `CREATE2` and a proper initializer containing owners. Thus, Safe users should **not** rely on their ability to control a particular Safe address on new networks.
 
 _(Note: This was responsibly disclosed to the Safe team, and they confirmed it was a known issue, fixed in v1.4.1.)_
 
@@ -53,7 +53,7 @@ Let’s say you deploy on a new chain, **Sonic**, which at the time of observati
 <p align="center" >
     <img src="/assets/img/safe_deploy2.png" alt="Alt text" width="650"/>
     <em style="color: #808080;"><br/>
-        Safe deployment happy path.
+        Safe address theft.
     </em>
 </p>
 
