@@ -7,24 +7,37 @@ tags: Resupply Prisma
 featured: true
 ---
 
-As the Resupply team prepares for an exciting launch, one pesky task has occupied the focus of the team: shutting down Prisma Finance, a [hacked](https://rekt.news/prismafi-rekt/) Liquity fork that has since become a ghost ship. Once supported by Yearn and Convex liquid locker products, Prisma Finance was abandoned by its team, leaving it in a fragile state. In fact, Resupply was originally conceived as a replacement for Prisma, which governance approved with [PIP-46](https://gov.prismafinance.com/t/pip-46-shutdown-prisma-finance-introduce-resupply/232). But unwidning the system turned out to be a trickier task than expected.
+As the Resupply team prepares for an exciting launch, one pesky task has occupied the focus of the team: shutting down Prisma Finance, a [hacked](https://rekt.news/prismafi-rekt/) Liquity fork that has since become a ghost ship. Once supported by Yearn and Convex liquid locker products, Prisma Finance was abandoned by its team, leaving it in a fragile state. Resupply was in fact originally conceived as a replacement for Prisma, which governance approved with [PIP-46](https://gov.prismafinance.com/t/pip-46-shutdown-prisma-finance-introduce-resupply/232). But unwinding the system turned out to be a trickier task than expected.
 
-This post highlights a few unexpected challenges that cropped up, but that were eventually overcome with great success. Including two critical bugs, complex economics, and creative solutions to ensure all users are able to exit safely from a protocol that we neither designed nor fully understood at the outset.
+In this post I'll highlight:
+
+- How we discovered and worked around a critical bug found in Trove Manager accounting, allowing users to regain access to their collateral without introducing bad debt into the system.
+- How we discovered a bug in the ULTRA stability pool that allowed an attacker to extract approximately 13.92 ETH that did not belong to them.
+- A creative solution to combat upward depegs by allowing users to close their loans using a separate stablecoin.
 
 ### Exposing a Trove Manager Accounting Bug
 
-As Prisma’s TVL dwindled thanks to the PSMs described in a later section, a subtle accounting bug was brought to light. I noticed a sizeable mismatch between the sum of user debt and what the trove thinks its total debt is. A search for the culprit was on. With some meticulous code inspection and some help from Tenderly, I was able to identify the issue within the `openTrove()` function.
+As Prisma’s TVL dwindled (thanks to the PSMs which I will describe in a later section), a subtle accounting issue was brought to light. I noticed a sizeable mismatch between the sum of user debt and what the trove thinks its total debt is.
 
 <p align="center" >
-    <img src="https://hackmd.io/_uploads/HkahFOOD1l.png" alt="Alt text" width="750"/>
+    <img src="/assets/img/active_debt_mismatch.png" alt="Alt text" width="550"/>
+    <em style="color: #808080;"><br/>
+        Sum of borrows exceeds total active debt.
+    </em>
+</p>
+
+Clearly there is some sort of accounting bug at play here, and the search for the culprit was on. After meticulous code inspection and help from Tenderly, I was able to trace the issue to the `openTrove()` function.
+
+<p align="center" >
+    <img src="/assets/img/open_trove.png" alt="Alt text" width="750"/>
     <em style="color: #808080;">
         The bug in the Trove Manager's `openTrove()` function.
     </em>
 </p>
 
-The code incorrectly writes a state update to `totalActiveDebt` using a stale value that doesn't include the interest accrued since the prior checkpoint. During normal operations, this bug was largely transparent because `totalActiveDebt` was high enough that there was no underflow risk when subtracting a repayment amount. But if the discrepancy is big enough, and as TVL drops, even a modest sized repayments can trigger it. In fact, the bug would render repayments, redemptions, and even liquidations impossible because when the final borrower repays, say $1,000 the trove manager's attempt to subtract that amount from `totalActiveDebt` (some number less than $1,000) will underflow. These reverting transactions effectively trap users' collateral.
+As you can see, the code incorrectly writes a state update to `totalActiveDebt` using a stale value that doesn't include the interest accrued since the prior checkpoint. During normal operations, this bug was largely transparent because `totalActiveDebt` was high enough that there was no underflow risk when subtracting a repayment amount. But if the discrepancy is big enough, and as TVL drops, even a modest sized repayments can trigger it. In fact, the bug would render repayments, redemptions, and even liquidations impossible because when the final borrower repays, say $1,000 the trove manager's attempt to subtract that amount from `totalActiveDebt` (some number less than $1,000) will underflow. These reverting transactions effectively trap users' collateral.
 
-Come to find out later, a patch was introduced by Prisma in one of the later versions of their Trove Manager code.So this bug is only present in older versions of trove managers.
+Come to find out later, a patch was introduced by Prisma in one of the later versions of their Trove Manager code. So this bug is only present in older versions of trove managers.
 
 Unfortunately, there is no way to manipulate this value back in line with where it should be. Additionally, at this point, governance had already placed all Trove Managers in “sunsetting” mode, preventing any obvious methods of intervention. However, we discovered a loophole: the ability for governance to upgrade the oracle was still available.
 
@@ -70,7 +83,7 @@ This innovation got the protocol out of the jam by providing users with liquidit
 
 Custom UI development work was done to provide users with an app to interact with the PSM.
 
-- https://prisma-psm.yearn.space/
+- [https://prisma-psm.yearn.space/](https://prisma-psm.yearn.space/)
 
 As of writing the PSM balances are as follows:
 
@@ -79,6 +92,4 @@ As of writing the PSM balances are as follows:
 
 ### Wrapping Up
 
-Shutting down Prisma is still in progress, with less than $80k debt remaining, but it was far from straightforward. Between economic exploits and protocol bugs, the process required custom tools, clever engineering, and delicate maneuvering to ensure users exited with minimal harm. The experience highlights the complexity of unwinding DeFi protocols and the importance of testing and robust design.
-
-Resupply emerges from this experience stronger and ready to chart a new path, leaving behind the lessons learned from Prisma’s closure.
+Shutting down Prisma is still in progress, with less than $80k debt remaining, but it was far from straightforward. Between economic exploits and protocol bugs, the process required custom tools, clever engineering, and delicate maneuvering to ensure users exited with minimal harm. The experience highlights the complexity of unwinding DeFi protocols and the importance of testing.
