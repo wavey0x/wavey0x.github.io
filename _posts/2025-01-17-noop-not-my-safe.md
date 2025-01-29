@@ -7,7 +7,7 @@ tags: Security Gnosis Safe Disclosures
 featured: true
 ---
 
-If you're like me, you kick out of deploying Safe multisigs to [vanity addresses](https://etherscan.io/address/0xC001d00d425Fa92C4F840baA8f1e0c27c4297a0B) and across multiple networks.
+If you're like me, you get a kick out of deploying Safe multisigs deterministically to [vanity addresses](https://etherscan.io/address/0xC001d00d425Fa92C4F840baA8f1e0c27c4297a0B) and across multiple networks.
 
 But how safe is this practice?
 
