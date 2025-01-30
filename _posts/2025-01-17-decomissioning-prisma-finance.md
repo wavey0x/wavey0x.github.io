@@ -60,6 +60,7 @@ In late December, a Discord user pastelfork flagged a new issue during the shutd
     <em style="color: #808080;">
     </em>
 </p>
+...
 <p align="center" >
     <img src="https://hackmd.io/_uploads/BkajF_uvye.png" alt="Alt text" width="750"/>
     <em style="color: #808080;">
