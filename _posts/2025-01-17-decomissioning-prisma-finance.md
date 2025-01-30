@@ -9,11 +9,11 @@ featured: true
 
 As the Resupply team prepares for an exciting launch, one pesky task has occupied the focus of the team: shutting down Prisma Finance, a [hacked](https://rekt.news/prismafi-rekt/) Liquity fork that has since become a ghost ship. Once supported by Yearn and Convex liquid locker products, Prisma Finance was abandoned by its team, leaving it in a fragile state. Resupply was in fact originally conceived as a replacement for Prisma, which governance approved with [PIP-46](https://gov.prismafinance.com/t/pip-46-shutdown-prisma-finance-introduce-resupply/232). But unwinding the system turned out to be a trickier task than expected.
 
-In this post I'll highlight:
+In this post I'll highlight how we:
 
-- How we discovered and worked around a critical bug found in Trove Manager accounting, allowing users to regain access to their collateral without introducing bad debt into the system.
-- How we discovered a bug in the ULTRA stability pool that allowed an attacker to extract approximately 13.92 ETH that did not belong to them.
-- A creative solution to combat upward depegs by allowing users to close their loans using a separate stablecoin.
+1. Discovered and worked around a critical bug found in Trove Manager accounting, allowing users to regain access to their collateral and avoided introducing bad debt into the system.
+1. Discovered a bug in the ULTRA stability pool that allowed an attacker to extract approximately 13.92 ETH that did not belong to them.
+1. Created a creative solution to combat upward depegs by allowing users to close their loans using a separate stablecoin.
 
 ### Exposing a Trove Manager Accounting Bug
 
@@ -67,6 +67,14 @@ In late December, a Discord user pastelfork flagged a new issue during the shutd
 </p>
 
 A user was able to extract approximately 13.92 ETH that did not belong to him. In all likelihood, he didn't set out to find this bug, but rather stumbled across it.
+
+Looking at Etherscan, you can see just a sample of the many repeated claims he made to drain the pool.
+
+<p align="center" >
+    <img src="/assets/img/ultra_sp.png" alt="Alt text" width="750"/>
+    <em style="color: #808080;">
+    </em>
+</p>
 
 To prevent further abuse, a call to users to withdraw from the ULTRA stability pool was issued.
 
