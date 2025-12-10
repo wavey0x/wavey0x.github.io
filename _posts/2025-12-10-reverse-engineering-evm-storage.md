@@ -3,11 +3,26 @@ layout: post
 title: Reverse Engineering EVM Storage
 date: 2025-12-10 00:00:00
 description: Techniques for mapping EVM storage slots back to variable names and decoding transaction traces
-tags: EVM Storage Solidity Reverse-Engineering
+tags: EVM Storage Compilers Solidity
 featured: true
 ---
 
 Ethereum storage is deceptively simple: 32-byte slots holding 32-byte values. But mapping those slots back to meaningful variable names is where things get interesting. Particularly when the goal is to go beyond generating a simple layout to reverse engineering SSTOREs within transaction traces. This was my objective with [SlotScan.info](https://slotscan.info), and forms the background for the learnings that I will share here.
+
+<div style="display: flex; justify-content: center; gap: 16px; margin: 20px 0;">
+    <div style="text-align: center; flex: 1; max-width: 48%;">
+        <img src="/assets/img/slotscan_transaction.png" alt="SlotScan transaction view" data-zoomable style="width: 100%; aspect-ratio: 1/1.18; object-fit: cover; object-position: top; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); border-radius: 4px; cursor: zoom-in;"/>
+        <em style="color: #808080; display: block; margin-top: 8px; font-size: 0.9em;">
+            Example "Transaction" view from SlotScan.info
+        </em>
+    </div>
+    <div style="text-align: center; flex: 1; max-width: 48%;">
+        <img src="/assets/img/slotscan_layout.png" alt="SlotScan layout view" data-zoomable style="width: 100%; aspect-ratio: 1/1.18; object-fit: cover; object-position: top; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); border-radius: 4px; cursor: zoom-in;"/>
+        <em style="color: #808080; display: block; margin-top: 8px; font-size: 0.9em;">
+            Example "Layout" view from SlotScan.info
+        </em>
+    </div>
+</div>
 
 **Contents**
 
