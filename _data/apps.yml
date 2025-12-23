@@ -34,7 +34,7 @@
   github: https://github.com/wavey0x/rsup.lol
 
 - title: ybs.wavey.info
-  description: track all "yearn boosted staker" (YBS) data for any deployed instance.
+  description: track all "yearn boosted staker" (ybs) data for any deployed instance.
   logo: ybs-logo.png
   url: https://ybs.wavey.info
   github: https://github.com/wavey0x/ybs-dash-app

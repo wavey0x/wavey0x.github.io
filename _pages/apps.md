@@ -10,12 +10,12 @@ nav_order: 1
 
 <div class="apps-header">
   <h1>apps</h1>
-  <p>i build open source apps to index and visualize ethereum data. Here are some open source examples:</p>
+  <p>some apps i've built for exploring evm and protocol data</p>
 </div>
 
 <div class="apps-grid">
 {% for app in site.data.apps %}
-  <div class="app-card">
+  <div class="app-card" onclick="window.open('{{ app.url }}', '_blank')" style="cursor: pointer;">
     <div class="app-icon">
       {% if app.logo %}
         <img src="{{ '/assets/img/' | append: app.logo | relative_url }}" alt="{{ app.title }}">
@@ -80,6 +80,14 @@ nav_order: 1
   border-radius: 10px;
   background: transparent;
   border: 1px solid var(--global-divider-color);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.app-card:hover {
+  background: rgba(128, 128, 128, 0.1);
+  border-color: var(--global-theme-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .app-icon {
