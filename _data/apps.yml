@@ -1,0 +1,40 @@
+# Apps data - Edit this file to add/remove/reorder apps
+# Fields: title, description, logo (path in /assets/img/), url, github
+# Apps are displayed in the order listed here
+
+- title: auctionscan
+  description: an etherscan-style explorer for tracking and benchmarking on-chain dutch auctions
+  logo: auctionscan-logo.png
+  url: https://auctionscan.info/
+  github: https://github.com/wavey0x/Auctionscan
+
+- title: token vesting
+  description: create and track any vesting contracts deployed from the standard vyper factory.
+  logo: vest-app.png
+  url: https://vest.wavey.info/
+  github: https://github.com/wavey0x/app2
+
+- title: slotscan
+  description: human readable evm storage layouts and intra-transaction storage changes.
+  logo: slotscan.svg
+  url: https://slotscan.info
+  github: https://github.com/wavey0x/slotscan
+
+
+- title: crv.lol
+  description: compare any CRV liquid locker, and quickly access curve gauge, and DAO voting data.
+  logo: crv-lol-logo.png
+  url: https://crv.lol/
+  github: https://github.com/wavey0x/curve-ll-charts
+
+- title: rsup.lol
+  description: lightning quick access to Resupply ecosystem data
+  logo: rsup-lol-logo.png
+  url: https://rsup.lol/
+  github: https://github.com/wavey0x/rsup.lol
+
+- title: ybs.wavey.info
+  description: track all "yearn boosted staker" (YBS) data for any deployed instance.
+  logo: ybs-logo.png
+  url: https://ybs.wavey.info
+  github: https://github.com/wavey0x/ybs-dash-app

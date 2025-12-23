@@ -8,8 +8,10 @@ let toggleTheme = (theme) => {
   }
 };
 
-let setTheme = (theme) => {
-  transTheme();
+let setTheme = (theme, animate = true) => {
+  if (animate) {
+    transTheme();
+  }
   setHighlight(theme);
   setGiscusTheme(theme);
 
@@ -90,15 +92,14 @@ let transTheme = () => {
 let initTheme = (theme) => {
   if (theme == null || theme == "null") {
     const userPref = window.matchMedia;
-    /**
-     * If uncommented, this code will set the default theme to user's system default.
-     */
-    // if (userPref && userPref("(prefers-color-scheme: dark)").matches) {
-    //   theme = "dark";
-    // }
+    // Default to system preference
+    if (userPref && userPref("(prefers-color-scheme: dark)").matches) {
+      theme = "dark";
+    }
   }
 
-  setTheme(theme);
+  // Don't animate on initial page load - only on user-initiated theme toggle
+  setTheme(theme, false);
 };
 
 initTheme(localStorage.getItem("theme"));

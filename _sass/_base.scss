@@ -227,6 +227,9 @@ blockquote {
   box-shadow: none;
   border-bottom: 1px solid var(--global-divider-color);
   background-color: var(--global-bg-color);
+  // Fixed height to prevent layout shift
+  height: 56px;
+  min-height: 56px;
   opacity: 0.95;
 }
 
@@ -268,20 +271,22 @@ blockquote {
   }
 
   .navbar-nav .nav-item .nav-link {
-    color: var(--global-text-color);
+    color: var(--global-text-color-light);
 
     &:hover {
-      color: var(--global-hover-color);
+      color: var(--global-text-color);
     }
   }
 
   .navbar-nav .nav-item.active>.nav-link {
     background-color: inherit;
     font-weight: bolder;
-    color: var(--global-theme-color);
+    color: var(--global-text-color);
+    text-decoration: underline;
+    text-underline-offset: 4px;
 
     &:hover {
-      color: var(--global-hover-color);
+      color: var(--global-text-color);
     }
   }
 

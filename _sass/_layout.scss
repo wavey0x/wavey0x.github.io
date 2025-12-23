@@ -2,6 +2,12 @@
  * Content
  ******************************************************************************/
 
+html {
+  // Always reserve space for scrollbar to prevent layout shift between pages
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+
 body {
   padding-bottom: 70px;
   color: var(--global-text-color);
