@@ -33,12 +33,11 @@
   --global-danger-block-title: #c00;
 
   .fa-sun {
-    display: none;
+    opacity: 0;
+    pointer-events: none;
   }
   .fa-moon {
-    padding-left: 10px;
-    padding-top: 12px;
-    display: block;
+    opacity: 1;
   }
 
   .repo-img-light {
@@ -80,12 +79,11 @@ html[data-theme="dark"] {
   --global-danger-block-title: #c00;
 
   .fa-sun {
-    padding-left: 10px;
-    padding-top: 12px;
-    display: block;
+    opacity: 1;
   }
   .fa-moon {
-    display: none;
+    opacity: 0;
+    pointer-events: none;
   }
 
   .repo-img-light {

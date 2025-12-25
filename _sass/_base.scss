@@ -290,6 +290,13 @@ blockquote {
     }
   }
 
+  // Align toggle-container with nav items
+  .navbar-nav .toggle-container {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem; // Match Bootstrap's .nav-link padding
+  }
+
   .navbar-brand.social {
     padding-bottom: 0;
     padding-top: 0;
@@ -350,14 +357,53 @@ blockquote {
   }
 }
 
-#light-toggle {
+#light-toggle,
+#light-toggle-mobile {
   padding: 0;
-  border: 0;
-  background-color: inherit;
+  background-color: transparent;
   color: var(--global-text-color);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+  i {
+    position: absolute;
+    font-size: 14px;
+    transition: opacity 0.2s ease-in-out;
+  }
 
   &:hover {
     color: var(--global-hover-color);
+    border-color: var(--global-divider-color);
+  }
+}
+
+// Mobile header controls alignment
+.navbar .d-flex.d-sm-none {
+  align-items: center;
+
+  .navbar-toggler {
+    padding: 0;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 28px;
+
+    .icon-bar:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  #light-toggle-mobile {
+    margin-right: 32px;
   }
 }
 
