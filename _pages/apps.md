@@ -44,7 +44,7 @@ nav_order: 1
 <style>
 .apps-header {
   text-align: center;
-  padding: 2rem 0 2.5rem 0;
+  padding: 0.125rem 0 0.2rem 0;
 }
 
 .apps-header h1 {

@@ -233,6 +233,30 @@ blockquote {
   opacity: 0.95;
 }
 
+// Mobile nav menu - solid background to prevent overlap issues
+@media (max-width: 575.98px) {
+  .navbar {
+    height: auto;
+    min-height: 56px;
+  }
+
+  .navbar-collapse {
+    position: absolute;
+    right: 1rem;
+    top: 100%;
+    background-color: var(--global-bg-color);
+    border: 1px solid var(--global-divider-color);
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    width: auto;
+
+    .navbar-nav {
+      align-items: flex-end;
+    }
+  }
+}
+
 .navbar .dropdown-menu {
   background-color: var(--global-bg-color);
   border: 1px solid var(--global-divider-color);
@@ -359,6 +383,14 @@ blockquote {
 
 #light-toggle,
 #light-toggle-mobile {
+  // Browser resets for WebKit/Blink (fixes Brave mobile square outline)
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  box-sizing: border-box;
+
   padding: 0;
   background-color: transparent;
   color: var(--global-text-color);
@@ -534,8 +566,8 @@ footer.sticky-bottom {
 .header-bar {
   border-bottom: 1px solid var(--global-divider-color);
   text-align: center;
-  padding-top: 2rem;
-  padding-bottom: 3rem;
+  padding-top: 0.125rem;
+  padding-bottom: 0.2rem;
 
   h1 {
     color: var(--global-theme-color);
