@@ -43,14 +43,12 @@ footer_fixed: true
 # Dimensions
 max_width: 800px
 
-# TODO: add layout settings (single page vs. multi-page)
-
 # -----------------------------------------------------------------------------
 # Open Graph & Schema.org
 # -----------------------------------------------------------------------------
 # Display links to the page with a preview object on social media.
 serve_og_meta: true # Include Open Graph meta tags in the HTML head
-serve_schema_org: false # Include Schema.org in the HTML head
+serve_schema_org: true # Include Schema.org in the HTML head
 og_image: https://wavey0x.github.io/assets/img/prof_pic.png # The site-wide (default for all links) Open Graph preview image
 
 # -----------------------------------------------------------------------------
@@ -110,7 +108,7 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # -----------------------------------------------------------------------------
 
 blog_name: writing # blog_name will be displayed in your blog page
-blog_nav_title: posts # your blog must have a title for it to be displayed in the nav bar
+blog_nav_title: writing # your blog must have a title for it to be displayed in the nav bar
 # blog_description: ethereum, data, defi
 permalink: /posts/:year/:title/
 
@@ -132,19 +130,17 @@ related_blog_posts:
   enabled: false
   max_related: 5
 
-# Giscus comments (RECOMMENDED)
-# Follow instructions on https://giscus.app/ to setup for your repo to fill out
-# the information below.
-giscus:
-  repo: # <your-github-user-name>/<your-github-repo-name>
-  category: Comments # name of the category under which discussions will be created
-  mapping: title # identify discussions by post title
-  strict: 1 # use strict identification mode
-  reactions_enabled: 1 # enable (1) or disable (0) emoji reactions
-  input_position: bottom # whether to display input form below (bottom) or above (top) the comments
-  theme: preferred_color_scheme # name of the color scheme (preferred works well with al-folio light/dark mode)
-  emit_metadata: 0
-  lang: en
+# Giscus comments (DISABLED)
+# giscus:
+#   repo:
+#   category: Comments
+#   mapping: title
+#   strict: 1
+#   reactions_enabled: 1
+#   input_position: bottom
+#   theme: preferred_color_scheme
+#   emit_metadata: 0
+#   lang: en
 
 # Disqus comments (DEPRECATED - using Giscus instead)
 # disqus_shortname: wavey

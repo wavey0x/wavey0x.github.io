@@ -2,6 +2,7 @@
 layout: about
 title: about
 permalink: /
+subtitle: builder of ethereum data tools, smart contracts, and defi systems
 
 profile:
   align: center

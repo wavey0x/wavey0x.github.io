@@ -15,7 +15,7 @@ nav_order: 1
 
 <div class="apps-grid">
 {% for app in site.data.apps %}
-  <div class="app-card" onclick="window.open('{{ app.url }}', '_blank')" style="cursor: pointer;">
+  <a href="{{ app.url }}" class="app-card" target="_blank" rel="noopener">
     <div class="app-icon">
       {% if app.logo %}
         <img src="{{ '/assets/img/' | append: app.logo | relative_url }}" alt="{{ app.title }}">
@@ -28,14 +28,14 @@ nav_order: 1
       <p>{{ app.description }}</p>
     </div>
     <div class="app-links">
-      <a href="{{ app.url }}" class="app-link-visit" target="_blank" rel="noopener">
+      <span class="app-link-visit">
         Visit <i class="fas fa-arrow-right"></i>
-      </a>
-      <a href="{{ app.github }}" class="app-link-github" target="_blank" rel="noopener">
+      </span>
+      <span class="app-link-github" role="button" tabindex="0" aria-label="View {{ app.title }} on GitHub" onclick="event.preventDefault(); event.stopPropagation(); window.open('{{ app.github }}', '_blank');" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); event.stopPropagation(); window.open('{{ app.github }}', '_blank');}">
         <i class="fab fa-github"></i>
-      </a>
+      </span>
     </div>
-  </div>
+  </a>
 {% endfor %}
 </div>
 
@@ -81,6 +81,9 @@ nav_order: 1
   background: transparent;
   border: 1px solid var(--global-divider-color);
   transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .app-card:hover {
@@ -88,6 +91,13 @@ nav_order: 1
   border-color: var(--global-theme-color);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  color: inherit;
+}
+
+.app-card:focus {
+  outline: 2px solid var(--global-theme-color);
+  outline-offset: 2px;
 }
 
 .app-icon {
@@ -167,11 +177,18 @@ nav_order: 1
   color: var(--global-text-color);
   font-size: 1rem;
   transition: background 0.15s ease;
+  cursor: pointer;
 }
 
 .app-link-github:hover {
   background: var(--global-divider-color);
   text-decoration: none;
+}
+
+.app-link-github:focus {
+  outline: 2px solid var(--global-theme-color);
+  outline-offset: 2px;
+  background: var(--global-divider-color);
 }
 
 @media (max-width: 500px) {

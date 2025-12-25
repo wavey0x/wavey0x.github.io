@@ -8,7 +8,6 @@ layout: default
           <h1 class="post-title">
             {% if site.title == "blank" -%}{{ site.middle_name }} {{ site.last_name }}{%- else -%}{{ site.title }}{%- endif %}
           </h1>
-          <p class="desc">{{ page.subtitle }}</p>
         </header>
 
         <article>
@@ -37,7 +36,10 @@ layout: default
           </div>
           {%- endif %}
 
-          <span style="font-size: 50px;" class="font-weight-bold name-display profile float-center">{{ site.first_name }}.</span> 
+          <span style="font-size: 50px;" class="font-weight-bold name-display profile float-center">{{ site.first_name }}.</span>
+          {% if page.subtitle %}
+          <p class="about-tagline text-center text-muted" style="margin-top: 0.5rem; font-size: 1.1rem;">{{ page.subtitle }}</p>
+          {% endif %}
 
           <div class="clearfix">
             {{ content }}
@@ -51,7 +53,7 @@ layout: default
 
           <!-- Latest posts -->
           {% if page.latest_posts -%}
-            <h2><a href="{{ '/posts/' | relative_url }}" style="color: inherit;">latest posts</a></h2>
+            <h2><a href="{{ '/posts/' | relative_url }}" style="color: inherit;">latest writing</a></h2>
             {%- include latest_posts.html %}
           {%- endif %}
 
