@@ -38,3 +38,8 @@
   logo: ybs-logo.png
   url: https://ybs.wavey.info
   github: https://github.com/wavey0x/ybs-dash-app
+
+- title: safe txn deleter
+  description: interface to help quickly delete transactions from your Safe multisig queue.
+  logo: txn_deleter.svg
+  url: https://safe-txn-deleter.wavey.info/
