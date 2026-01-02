@@ -43,3 +43,4 @@
   description: interface to help quickly delete transactions from your Safe multisig queue.
   logo: txn_deleter.svg
   url: https://safe-txn-deleter.wavey.info/
+  github: https://github.com/wavey0x/safe-tx-deleter
