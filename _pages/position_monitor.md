@@ -9,6 +9,11 @@ nav: false
 
 <div class="monitor-header">
   <h1>position monitor</h1>
+  <p>
+    <a href="https://etherscan.io/address/0xe5BcBdf9452af0AB4b042D9d8a3c1E527E26419f" target="_blank" rel="noopener">0xe5Bc...419f</a>
+    &nbsp;|&nbsp;
+    <a href="https://github.com/wavey0x/open-data-scripts/blob/master/scripts/resupply/position_monitor.py" target="_blank" rel="noopener">code</a>
+  </p>
   <p id="meta-info">Loading...</p>
 </div>
 
@@ -49,7 +54,7 @@ nav: false
 }
 
 .chart-container {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   text-align: center;
 }
@@ -77,14 +82,7 @@ nav: false
     const lastRefresh = new Date(meta.last_refresh);
     const formattedDate = lastRefresh.toLocaleString();
 
-    let infoText = `Last refresh: ${formattedDate}`;
-
-    if (meta.user_address) {
-      const shortAddr = meta.user_address.slice(0, 6) + '...' + meta.user_address.slice(-4);
-      infoText += ` | User: <a href="https://etherscan.io/address/${meta.user_address}" target="_blank" rel="noopener">${shortAddr}</a>`;
-    }
-
-    document.getElementById('meta-info').innerHTML = infoText;
+    document.getElementById('meta-info').textContent = `Last refresh: ${formattedDate}`;
 
     // Add cache busting to the image
     const img = document.getElementById('chart-image');
