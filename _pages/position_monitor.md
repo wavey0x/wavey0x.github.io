@@ -7,49 +7,36 @@ nav: false
 
 <div class="post">
 
-<div class="monitor-header">
-  <h1>position monitor</h1>
-  <p>
-    <a href="https://etherscan.io/address/0xe5BcBdf9452af0AB4b042D9d8a3c1E527E26419f" target="_blank" rel="noopener">0xe5Bc...419f</a>
-    &nbsp;|&nbsp;
-    <a href="https://github.com/wavey0x/open-data-scripts/blob/master/scripts/resupply/position_monitor.py" target="_blank" rel="noopener">code</a>
-  </p>
-  <p id="meta-info">Loading...</p>
-</div>
-
 <div class="chart-container">
   <img id="chart-image" src="https://raw.githubusercontent.com/wavey0x/open-data/master/charts/resupply_positions.png" alt="Resupply Positions Chart">
 </div>
 
+<ul class="monitor-info">
+  <li><a href="https://etherscan.io/address/0xe5BcBdf9452af0AB4b042D9d8a3c1E527E26419f" target="_blank" rel="noopener">0xe5BcBdf9452af0AB4b042D9d8a3c1E527E26419f</a></li>
+  <li><a href="https://github.com/wavey0x/open-data-scripts/blob/master/scripts/resupply/position_monitor.py" target="_blank" rel="noopener">see code</a></li>
+  <li id="meta-info">Loading...</li>
+</ul>
+
 </div>
 
 <style>
-.monitor-header {
-  text-align: center;
-  padding: 0.125rem 0 1.5rem 0;
+.monitor-info {
+  padding: 1rem 0 0 1.5rem;
+  margin: 0;
 }
 
-.monitor-header h1 {
-  font-size: 2.5rem;
-  font-weight: 300;
-  color: var(--global-theme-color);
-  margin: 0 0 0.75rem 0;
-  letter-spacing: -0.02em;
-}
-
-.monitor-header p {
+.monitor-info li {
   font-size: 0.95rem;
   color: var(--global-text-color-light);
-  margin: 0;
-  line-height: 1.5;
+  line-height: 1.8;
 }
 
-.monitor-header a {
+.monitor-info a {
   color: var(--global-theme-color);
   text-decoration: none;
 }
 
-.monitor-header a:hover {
+.monitor-info a:hover {
   text-decoration: underline;
 }
 
@@ -66,11 +53,6 @@ nav: false
   border: 1px solid var(--global-divider-color);
 }
 
-@media (max-width: 500px) {
-  .monitor-header h1 {
-    font-size: 2rem;
-  }
-}
 </style>
 
 <script>
