@@ -194,6 +194,51 @@ blockquote {
   margin: 0 auto; /* Centering horizontally */
 }
 
+.profile.profile-wide {
+  width: 100%;
+  max-width: 720px;
+
+  figure {
+    width: 100%;
+    margin-bottom: 0;
+  }
+}
+
+.profile.profile-circle-frame {
+  width: min(78vw, 24rem);
+  max-width: 24rem;
+
+  figure {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 0;
+    padding: 2px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.16);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+  }
+
+  picture {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+    border-radius: 50%;
+    background: #000;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    background: #000;
+    transform: scale(1.08);
+  }
+}
+
 @media (min-width: 576px) {
   .profile {
     width: 30%;
@@ -203,6 +248,16 @@ blockquote {
         display: block;
       }
     }
+  }
+
+  .profile.profile-wide {
+    width: 72%;
+    max-width: 760px;
+  }
+
+  .profile.profile-circle-frame {
+    width: min(55vw, 25rem);
+    max-width: 25rem;
   }
 }
 

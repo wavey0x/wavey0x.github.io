@@ -12,15 +12,11 @@ layout: default
 
         <article>
           {% if page.profile -%}
-          <div class="profile float-center" style="margin-top: 4rem;">
+          <div class="profile float-center{% if page.profile.wide %} profile-wide{% endif %}{% if page.profile.frame == 'circle' %} profile-circle-frame{% endif %}" style="margin-top: 4rem;">
             {%- if page.profile.image %}
               {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
 
-              {% if page.profile.image_circular %}
-                {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
-              {% else %}
-                {%- assign profile_image_class = "img-fluid z-depth-1 rounded" -%}
-              {% endif %}
+              {%- capture profile_image_class -%}img-fluid z-depth-1{% if page.profile.image_circular %} rounded-circle{% else %} rounded{% endif %}{%- endcapture -%}
 
               {% include figure.html
               path=profile_image_path
