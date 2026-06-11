@@ -48,7 +48,7 @@ In a nice piece of news, we found more than enough money to pay that down via un
 ### Identifying the Stability Pool Exploit
 
 <p align="center" >
-    <img src="https://hackmd.io/_uploads/BJvtYd_vyx.png" alt="Alt text" width="600"/>
+    <img src="/assets/img/prisma-sp-claim-issue.png" alt="Alt text" width="600"/>
     <em style="color: #808080;">
     </em>
 </p>
@@ -56,13 +56,13 @@ In a nice piece of news, we found more than enough money to pay that down via un
 In late December, a Discord user pastelfork flagged a new issue during the shutdown: collateral gains from the ULTRA stability pool depositors couldn’t be claimed. After some review, we discovered a bug introduced to ULTRA’s stability pool. An errant line in `claimCollateralGains()` resets a value that should have been zeroed out, incorrectly allowing repeated claims of the same amount until the pool is fully drained.
 
 <p align="center" >
-    <img src="https://hackmd.io/_uploads/HyFcFd_vkx.png" alt="Alt text" width="750"/>
+    <img src="/assets/img/prisma-claim-collateral-bug.png" alt="Alt text" width="750"/>
     <em style="color: #808080;">
     </em>
 </p>
 ...
 <p align="center" >
-    <img src="https://hackmd.io/_uploads/BkajF_uvye.png" alt="Alt text" width="750"/>
+    <img src="/assets/img/prisma-repeat-claims.png" alt="Alt text" width="750"/>
     <em style="color: #808080;">
     </em>
 </p>

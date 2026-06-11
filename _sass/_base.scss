@@ -60,6 +60,28 @@ img {
   max-width: 90vw;
 }
 
+.image-zoom-overlay {
+  align-items: center;
+  cursor: zoom-out;
+  display: none;
+  inset: 0;
+  justify-content: center;
+  padding: 2rem;
+  position: fixed;
+  z-index: 2000;
+
+  &.open {
+    display: flex;
+  }
+
+  img {
+    box-shadow: 0 1rem 3rem rgba($black-color, 0.35);
+    max-height: 90vh;
+    max-width: 92vw;
+    object-fit: contain;
+  }
+}
+
 blockquote {
   background: var(--global-bg-color);
   border-left: 5px solid var(--global-theme-color);
