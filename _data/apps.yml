@@ -20,6 +20,17 @@
   url: https://slotscan.info
   github: https://github.com/wavey0x/slotscan
 
+- title: aave.wavey.info
+  description: aave v3 core liquidation risk, carry bleed, and post-exploit borrow flow monitor.
+  logo: aave-wavey-logo.svg
+  url: https://aave.wavey.info
+  github: https://github.com/wavey0x/aave-watch
+
+- title: gist.wavey.info
+  description: censorship-resistant, self-hosted GitHub Gist replica with ethereum-aware markdown.
+  logo: gist-wavey-logo.svg
+  url: https://gist.wavey.info
+  github: https://github.com/wavey0x/gist
 
 - title: crv.lol
   description: compare any CRV liquid locker, and quickly access curve gauge, and DAO voting data.
