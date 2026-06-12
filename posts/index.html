@@ -27,21 +27,22 @@ pagination:
 
   <div class="writing-list">
     {% for post in paginator.posts %}
-    {% if post.external_source == blank %}
-      {% assign read_time = post.content | number_of_words | divided_by: 180 | plus: 1 %}
-    {% else %}
+    {% if post.external_source %}
       {% assign read_time = post.feed_content | strip_html | number_of_words | divided_by: 180 | plus: 1 %}
+    {% else %}
+      {% assign read_time = post.content | number_of_words | divided_by: 180 | plus: 1 %}
     {% endif %}
 
-    {% if post.redirect == blank %}
-      {% assign post_url = post.url | relative_url %}
-      {% assign external = false %}
-    {% elsif post.redirect contains '://' %}
-      {% assign post_url = post.redirect %}
-      {% assign external = true %}
+    {% assign external = false %}
+    {% if post.redirect %}
+      {% if post.redirect contains '://' %}
+        {% assign post_url = post.redirect %}
+        {% assign external = true %}
+      {% else %}
+        {% assign post_url = post.redirect | relative_url %}
+      {% endif %}
     {% else %}
-      {% assign post_url = post.redirect | relative_url %}
-      {% assign external = false %}
+      {% assign post_url = post.url | relative_url %}
     {% endif %}
 
     <a href="{{ post_url }}" class="writing-card" {% if external %}target="_blank" rel="noopener"{% endif %}>
