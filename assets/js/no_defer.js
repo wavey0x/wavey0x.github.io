@@ -7,11 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
       table.classList.remove("table-dark");
     }
 
-    if (
-      !table.closest('[class*="news"]') &&
-      !table.closest('[class*="card"]') &&
-      !table.closest("code")
-    ) {
+    if (!table.closest('[class*="card"]') && !table.closest("code")) {
       table.classList.add("table-hover");
     }
   });
