@@ -7,7 +7,7 @@ tags: Reth EVM Tracing Performance
 featured: true
 ---
 
-Until now, SlotScan—my tool for decoding storage changes in EVM transactions—was executing every traced transaction twice.
+SlotScan decodes storage changes in EVM transactions. Until now, doing that required executing each traced transaction twice.
 
 In [Part 1](https://wavey.info/posts/2025/reverse-engineering-evm-storage/), I wrote that multiple trace passes were necessary to collect the state diff, ordered writes, call-frame attribution, and hash preimages SlotScan needs.
 
