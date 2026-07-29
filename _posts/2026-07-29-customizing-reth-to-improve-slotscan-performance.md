@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Customizing Reth to Improve SlotScan Performance
+title: Customizing Reth for Up to 16× Faster SlotScan Tracing
 date: 2026-07-29 00:00:00 -0400
 description: How a custom Reth RPC method reduced SlotScan tracing from two transaction replays to one, delivering up to a 16× speedup
 tags: Reth EVM Tracing Performance
@@ -17,6 +17,8 @@ Using Reth's NodeBuilder, I built a custom binary that handles SlotScan's tracin
 
 Across four sample transactions, I measured a **2.03× to 16.07× speedup**. Trace processing time for the largest fell from 10.5 seconds to 656 milliseconds.
 
+{% include slotscan-native-tracing-flow.html %}
+
 ## The problem: one tracer per request meant two executions
 
 Reth's execution engine could produce the evidence SlotScan needed. The limitation was its default external API: `debug_traceTransaction` runs one selected tracer per request, and that tracer determines what the execution returns. No default method combined Reth's pre/post state diff with SlotScan's custom ordered evidence.
@@ -30,25 +32,15 @@ The first request used Reth's built-in `prestateTracer` in diff mode to produce 
 
 Each request performed its own heavyweight replay. To trace a historical transaction, Reth reconstructs the block's starting state, processes earlier transactions in the same block, and then executes the target while the selected tracer observes it:
 
-```text
-debug_traceTransaction(tracer: "prestateTracer", diffMode: true)
-└── reconstruct state → process earlier block transactions
-    → execute target → build committed diff
-
-debug_traceTransaction(tracer: JavaScript tracer)
-└── reconstruct state → process earlier block transactions
-    → execute target → collect ordered evidence
-```
-
 Putting both calls into one JSON-RPC batch would save a network round trip. It would not save either replay or execution.
 
 ## The constraint: extend Reth without forking it
 
 I wanted one canonical replay without losing either evidence view. I also wanted to reuse Reth's state database, execution environment, and tracing controls—not reimplement historical state reconstruction or maintain a permanent source fork. The real constraint was keeping that integration narrow enough to survive Reth upgrades.
 
-## The implementation: extending Reth instead of forking it
+## The implementation: extending Reth
 
-Reth made this easier than I expected. [Reth's NodeBuilder](https://reth.rs/docs/reth/builder/struct.NodeBuilder.html) assembles a node from standard components and exposes hooks for adding custom functionality. The [`extend_rpc_modules`](https://reth.rs/sdk/examples/modify-node/) hook can add custom RPC methods before the servers launch.
+[Reth's NodeBuilder](https://reth.rs/docs/reth/builder/struct.NodeBuilder.html) made this possible without a source fork. Its [`extend_rpc_modules`](https://reth.rs/sdk/examples/modify-node/) hook registers custom methods before the servers launch, keeping the SlotScan integration narrow and Reth upgrades manageable.
 
 The node-level change is small:
 
@@ -65,17 +57,9 @@ let handle = builder
     .await?;
 ```
 
-Reth still handles networking, consensus, the database, the transaction pool, and its standard RPC methods; SlotScan adds one `slotscan` namespace. I maintain a version-specific adapter, but the change to Reth stays small.
+Reth still handles networking, consensus, the database, the transaction pool, and its standard RPC methods; SlotScan adds one `slotscan` namespace.
 
 Inside `slotscan_traceTransaction`, the adapter invokes Reth's canonical `spawn_trace_transaction_in_block_with_inspector` helper and supplies a custom REVM inspector. When the replay finishes, the completion closure receives the inspector output, execution result, and historical database view—before any JSON serialization.
-
-```text
-slotscan_traceTransaction
-└── reconstruct state → execute once with SlotScanInspector
-                        ├── ordered write and hash evidence
-                        ├── authoritative pre/post diff
-                        └── transaction-start storage observations
-```
 
 During execution, `SlotScanInspector` records ordered `SSTORE` and `TSTORE` operations, call-frame outcomes, relevant `KECCAK256` preimages, and a bounded set of storage reads. REVM's journal supplies the immediate old value for each write, while its call hooks preserve storage attribution and rollback semantics.
 
@@ -85,12 +69,7 @@ After execution, `GethTraceBuilder` derives the committed state diff from the sa
 
 Before measuring performance, I verified that both paths returned equivalent state diffs, ordered writes, frame attribution, hash evidence, storage observations, step counts, and transaction identity. I then warmed both modes and ran eight paired samples with alternating order against the same Reth v2.4.1 node.
 
-| Transaction shape | EVM steps | Writes | Legacy median | Native median | Speedup |
-|---|---:|---:|---:|---:|---:|
-| ERC-20 transfer | 571 | 2 | 1,101.5 ms | 543.7 ms | 2.03× |
-| Reverted writes | 318,375 | 468 | 2,360.9 ms | 487.4 ms | 4.84× |
-| Proxy voting | 167,759 | 99 | 1,587.1 ms | 479.4 ms | 3.31× |
-| [High-fanout delegation](https://etherscan.io/tx/0x0fe2542079644e107cbf13690eb9c2c65963ccb79089ff96bfaf8dced2331c92) | 2,324,323 | 511 | 10,545.8 ms | 656.4 ms | 16.07× |
+{% include slotscan-benchmark-table.html %}
 
 Native response sizes stayed within -3.2% to +2.5% of the legacy responses, so the speedup did not come from dropping evidence.
 

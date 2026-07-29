@@ -1,0 +1,138 @@
+<figure class="slotscan-trace-flow">
+  <svg viewBox="0 0 680 350" role="img" aria-labelledby="slotscan-flow-title slotscan-flow-description">
+    <title id="slotscan-flow-title">SlotScan tracing before and after the native Reth integration</title>
+    <desc id="slotscan-flow-description">The legacy SlotScan flow called debug trace transaction twice in sequence, once with the prestate tracer and once with a JavaScript tracer. The native SlotScan RPC returns both evidence views from one replay.</desc>
+
+    <defs>
+      <marker id="slotscan-flow-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path class="arrow-head" d="M 0 0 L 10 5 L 0 10 z"/>
+      </marker>
+    </defs>
+
+    <text class="heading" x="20" y="28">BEFORE</text>
+    <text class="count" x="660" y="28" text-anchor="end">2 replays</text>
+
+    <rect class="node" x="20" y="57" width="82" height="48" rx="6"/>
+    <text class="label" x="61" y="86" text-anchor="middle">SlotScan</text>
+    <path class="flow" d="M 102 81 H 120"/>
+
+    <rect class="node" x="122" y="52" width="220" height="58" rx="6"/>
+    <text class="label" x="232" y="77" text-anchor="middle">debug_traceTransaction</text>
+    <text class="detail" x="232" y="96" text-anchor="middle">prestateTracer</text>
+    <path class="flow" d="M 342 81 H 360"/>
+
+    <rect class="node" x="362" y="57" width="92" height="48" rx="6"/>
+    <text class="label" x="408" y="86" text-anchor="middle">replay</text>
+    <path class="flow" d="M 454 81 H 472"/>
+
+    <rect class="node" x="474" y="57" width="186" height="48" rx="6"/>
+    <text class="label" x="567" y="86" text-anchor="middle">state diff</text>
+
+    <path class="flow" d="M 567 105 V 124 H 232 V 139"/>
+
+    <rect class="node" x="122" y="141" width="220" height="58" rx="6"/>
+    <text class="label" x="232" y="166" text-anchor="middle">debug_traceTransaction</text>
+    <text class="detail" x="232" y="185" text-anchor="middle">JavaScript tracer</text>
+    <path class="flow" d="M 342 170 H 360"/>
+
+    <rect class="node" x="362" y="146" width="92" height="48" rx="6"/>
+    <text class="label" x="408" y="175" text-anchor="middle">replay</text>
+    <path class="flow" d="M 454 170 H 472"/>
+
+    <rect class="node" x="474" y="146" width="186" height="48" rx="6"/>
+    <text class="label" x="567" y="175" text-anchor="middle">ordered evidence</text>
+
+    <line class="divider" x1="20" y1="229" x2="660" y2="229"/>
+
+    <text class="heading" x="20" y="262">AFTER</text>
+    <text class="count" x="660" y="262" text-anchor="end">1 replay</text>
+
+    <rect class="node native" x="20" y="281" width="82" height="48" rx="6"/>
+    <text class="label" x="61" y="310" text-anchor="middle">SlotScan</text>
+    <path class="flow" d="M 102 305 H 120"/>
+
+    <rect class="node native" x="122" y="281" width="220" height="48" rx="6"/>
+    <text class="label" x="232" y="310" text-anchor="middle">slotscan_traceTransaction</text>
+    <path class="flow" d="M 342 305 H 360"/>
+
+    <rect class="node native" x="362" y="281" width="92" height="48" rx="6"/>
+    <text class="label" x="408" y="310" text-anchor="middle">replay</text>
+    <path class="flow" d="M 454 305 H 472"/>
+
+    <rect class="node native" x="474" y="281" width="186" height="48" rx="6"/>
+    <text class="label" x="567" y="300" text-anchor="middle">state diff +</text>
+    <text class="label" x="567" y="318" text-anchor="middle">ordered evidence</text>
+  </svg>
+
+  <figcaption class="caption">Two sequential trace requests became one native replay.</figcaption>
+</figure>
+
+<style>
+  .slotscan-trace-flow {
+    margin: 1.5rem auto;
+    max-width: 680px;
+  }
+
+  .slotscan-trace-flow svg {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+
+  .slotscan-trace-flow text {
+    fill: var(--global-text-color);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .slotscan-trace-flow .heading {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .slotscan-trace-flow .count,
+  .slotscan-trace-flow .detail {
+    fill: var(--global-text-color-light);
+  }
+
+  .slotscan-trace-flow .count {
+    font-size: 14px;
+  }
+
+  .slotscan-trace-flow .label {
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .slotscan-trace-flow .detail {
+    font-size: 13px;
+  }
+
+  .slotscan-trace-flow .node {
+    fill: var(--global-bg-color);
+    stroke: var(--global-text-color-light);
+    stroke-opacity: 0.35;
+    stroke-width: 1.25;
+  }
+
+  .slotscan-trace-flow .node.native {
+    fill: rgba(91, 145, 103, 0.08);
+    stroke: rgba(91, 145, 103, 0.7);
+    stroke-opacity: 1;
+  }
+
+  .slotscan-trace-flow .flow {
+    fill: none;
+    marker-end: url(#slotscan-flow-arrow);
+    stroke: var(--global-text-color-light);
+    stroke-width: 1.5;
+  }
+
+  .slotscan-trace-flow .arrow-head {
+    fill: var(--global-text-color-light);
+  }
+
+  .slotscan-trace-flow .divider {
+    stroke: var(--global-divider-color);
+  }
+</style>

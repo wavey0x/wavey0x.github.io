@@ -1,0 +1,87 @@
+<div class="slotscan-benchmark-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Transaction</th>
+        <th>Steps</th>
+        <th>Writes</th>
+        <th>Legacy</th>
+        <th>Native</th>
+        <th>Speedup</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ERC-20 transfer</td>
+        <td>571</td>
+        <td>2</td>
+        <td>1,101.5 ms</td>
+        <td>543.7 ms</td>
+        <td>2.03×</td>
+      </tr>
+      <tr>
+        <td>Reverted writes</td>
+        <td>318,375</td>
+        <td>468</td>
+        <td>2,360.9 ms</td>
+        <td>487.4 ms</td>
+        <td>4.84×</td>
+      </tr>
+      <tr>
+        <td>Proxy voting</td>
+        <td>167,759</td>
+        <td>99</td>
+        <td>1,587.1 ms</td>
+        <td>479.4 ms</td>
+        <td>3.31×</td>
+      </tr>
+      <tr>
+        <td><a href="https://etherscan.io/tx/0x0fe2542079644e107cbf13690eb9c2c65963ccb79089ff96bfaf8dced2331c92">High-fanout delegation</a></td>
+        <td>2,324,323</td>
+        <td>511</td>
+        <td>10,545.8 ms</td>
+        <td>656.4 ms</td>
+        <td>16.07×</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .slotscan-benchmark-table {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  .slotscan-benchmark-table table {
+    background: transparent;
+    border-collapse: collapse;
+    color: var(--global-text-color);
+    margin: 0;
+    min-width: 760px;
+    width: 100%;
+  }
+
+  .slotscan-benchmark-table th,
+  .slotscan-benchmark-table td {
+    border-bottom: 1px solid var(--global-divider-color);
+    color: var(--global-text-color);
+    padding: 0.55rem 0.65rem;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .slotscan-benchmark-table th:first-child,
+  .slotscan-benchmark-table td:first-child {
+    text-align: left;
+  }
+
+  .slotscan-benchmark-table th {
+    font-weight: 500;
+  }
+
+  .slotscan-benchmark-table td:not(:first-child) {
+    font-variant-numeric: tabular-nums;
+  }
+</style>
