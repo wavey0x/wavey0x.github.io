@@ -30,7 +30,7 @@ SlotScan needed two kinds of evidence:
 
 The first request used Reth's built-in `prestateTracer` in diff mode to produce the committed state diff. The second used a compact JavaScript tracer to record the ordered execution evidence and the hash preimages needed to resolve mappings and dynamic storage.
 
-Each request performed its own heavyweight replay. To trace a historical transaction, Reth reconstructs the block's starting state, processes earlier transactions in the same block, and then executes the target while the selected tracer observes it:
+Each request performed its own heavyweight replay. To trace a historical transaction, Reth reconstructs the block's starting state, processes earlier transactions in the same block, and then executes the target while the selected tracer observes it.
 
 Putting both calls into one JSON-RPC batch would save a network round trip. It would not save either replay or execution.
 
@@ -76,8 +76,6 @@ Native response sizes stayed within -3.2% to +2.5% of the legacy responses, so t
 I expected something close to a 2× improvement from removing one of two replays. That is roughly what happened for the small ERC-20 transfer. The 2.32-million-step transaction improved by 16× because the old path also paid for a JavaScript callback on every opcode.
 
 These numbers cover uncached evidence acquisition, not total SlotScan page latency. Historical tracing is still expensive. This change only removes the work SlotScan was doing twice.
-
-The complete methodology and measurements are in the [native transaction tracing benchmark](https://gist.wavey.info/8zJtl2G5EElwPHksP1vvjsFt).
 
 You can try SlotScan at [slotscan.info](https://slotscan.info/).
 
