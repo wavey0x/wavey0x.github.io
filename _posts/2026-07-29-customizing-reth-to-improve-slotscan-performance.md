@@ -7,7 +7,7 @@ tags: Reth EVM Tracing Performance
 featured: true
 ---
 
-SlotScan decodes contract storage layouts and lets users trace every storage write in a transaction back to a human-readable variable. Until now, no standard RPC method could produce the view we wanted, so building it required an awkward combination of expensive trace calls.
+I built [SlotScan](https://slotscan.info/) to decode contract storage layouts and let users trace every storage write in a transaction back to a human-readable variable. Until now, no standard RPC method could produce the view we wanted, so building it required an awkward combination of expensive trace calls.
 
 In [Part 1](https://wavey.info/posts/2025/reverse-engineering-evm-storage/), I wrote that multiple trace passes were necessary to collect the state diff, ordered writes, call-frame attribution, and hash preimages SlotScan needs.
 
@@ -34,13 +34,11 @@ Each request performed its own heavyweight replay. To trace a historical transac
 
 Putting both calls into one JSON-RPC batch would save a network round trip. It would not save either replay or execution.
 
-## The constraint: extend Reth without forking it
-
-I wanted one canonical replay without losing either evidence view. I also wanted to reuse Reth's state database, execution environment, and tracing controls—not reimplement historical state reconstruction or maintain a permanent source fork. The real constraint was keeping that integration narrow enough to survive Reth upgrades.
-
 ## The implementation: extending Reth
 
-[Reth's NodeBuilder](https://reth.rs/docs/reth/builder/struct.NodeBuilder.html) made this possible without a source fork. Its [`extend_rpc_modules`](https://reth.rs/sdk/examples/modify-node/) hook registers custom methods before the servers launch, keeping the SlotScan integration narrow and Reth upgrades manageable.
+I wanted one canonical replay without losing either evidence view. I also wanted to reuse Reth's state database, execution environment, and tracing controls instead of reimplementing historical state reconstruction or maintaining a permanent source fork.
+
+Luckily, [Reth's NodeBuilder](https://reth.rs/docs/reth/builder/struct.NodeBuilder.html) made this possible. Its [`extend_rpc_modules`](https://reth.rs/sdk/examples/modify-node/) hook registers custom methods before the servers launch, keeping the SlotScan integration narrow and Reth upgrades manageable.
 
 The node-level change is small:
 
