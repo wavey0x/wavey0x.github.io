@@ -7,7 +7,7 @@ tags: Reth EVM Tracing Performance
 featured: true
 ---
 
-SlotScan decodes storage changes in EVM transactions. Until now, doing that required executing each traced transaction twice.
+SlotScan decodes contract storage layouts and lets users trace every storage write in a transaction back to a human-readable variable. Until now, producing that view required executing each transaction twice.
 
 In [Part 1](https://wavey.info/posts/2025/reverse-engineering-evm-storage/), I wrote that multiple trace passes were necessary to collect the state diff, ordered writes, call-frame attribution, and hash preimages SlotScan needs.
 
